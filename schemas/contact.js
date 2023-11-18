@@ -1,11 +1,19 @@
 const Joi = require("joi");
+const { emailRegexp } = require("../regexp/email");
+const { phoneRegexp } = require("../regexp/phone");
 
 const addSchema = Joi.object({
   name: Joi.string().required(),
-  email: Joi.string().required(),
-  phone: Joi.number().required(),
-}).min(1);
+  email: Joi.string().pattern(emailRegexp).required(),
+  phone: Joi.string().pattern(phoneRegexp).required(),
+  favorite: Joi.boolean(),
+});
+
+const updateFavoriteSchema = Joi.object({
+  favorite: Joi.boolean().required(),
+});
 
 module.exports = {
   addSchema,
+  updateFavoriteSchema,
 };
