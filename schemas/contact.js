@@ -1,6 +1,6 @@
 const Joi = require("joi");
-const { emailRegexp } = require("../regexp/email");
-const { phoneRegexp } = require("../regexp/phone");
+const emailRegexp = require("../regexp/email");
+const phoneRegexp = require("../regexp/phone");
 
 const addSchema = Joi.object({
   name: Joi.string().required(),
